@@ -32,7 +32,7 @@ git checkout dev
 git merge feature
 git checkout main
 git merge dev
-git tag -a v1.0.0 -m "Release v1.0.0"
+git tag -a v1.0.1 -m "Release v1.0.1"
 ```
 
 ## Technologies Used
@@ -111,7 +111,7 @@ git checkout -b feature
 git pull origin dev
 git push origin feature
 git merge feature
-git tag -a v1.0.0 -m "Release v1.0.0"
+git tag -a v1.0.1 -m "Release v1.0.1"
 ```
 
 ## Interview Questions and Answers
@@ -128,7 +128,7 @@ A pull request is a request to review and merge feature branch changes into anot
 Review the conflicting files, manually decide which changes to keep, mark the conflict as resolved, and commit the final merged result.
 
 ### What are Git tags?
-Tags are markers used to identify release points in a repository, such as `v1.0.0` for a stable production release.
+Tags are markers used to identify release points in a repository, such as `v1.0.1` for a stable production release.
 
 ### What is a Git workflow?
 A Git workflow defines how branches are created, updated, reviewed, and merged, often including `main`, `dev`, and feature branches.
@@ -141,3 +141,7 @@ A Git workflow defines how branches are created, updated, reviewed, and merged, 
 
 ## Summary
 This project demonstrates a strong DevOps workflow using Git, GitHub, Node.js, Docker, and CI/CD automation. It is structured to support collaborative development, release management, and continuous validation.
+
+## Release History
+- **v1.0.1** — Documentation and release metadata update.
+- **v1.0.0** — Initial application feature release.
