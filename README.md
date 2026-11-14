@@ -48,7 +48,7 @@ DevOps-Project-with-Git/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
-├── __tests__/
+├── tests/
 │   └── app.test.js
 ├── src/
 │   └── app.js
