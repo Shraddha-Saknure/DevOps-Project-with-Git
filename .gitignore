@@ -28,6 +28,9 @@ build/
 *.tar.gz
 *.zip
 
+# Local runtime validation result may contain machine-specific paths
+.tsupgrader/runtime-validation/standalone-result.json
+
 # IDE files
 .vscode/
 .idea/

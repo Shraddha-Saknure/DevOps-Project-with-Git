@@ -8,9 +8,9 @@ describe('DevOps app', () => {
     expect(response.status).toBe(200);
     expect(response.body).toMatchObject({
       service: 'DevOps Project',
-      status: 'ok',
-      version: '1.0.0'
+      status: 'ok'
     });
+    expect(response.body.version).toBe(require('../package.json').version);
   });
 
   test('GET /health reports healthy status', async () => {

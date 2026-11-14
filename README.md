@@ -12,7 +12,7 @@ This repository follows the Git best practices required for the Elevate Labs Dev
 - automate validation with CI/CD tooling
 
 ## Project Overview
-This project contains a simple Express-based Node.js application with health and root endpoints, along with a GitHub Actions workflow that runs tests, linting, build checks, and Docker image validation.
+This project contains a simple Express-based Node.js application. `GET /` returns service metadata, including the version from `package.json`, and `GET /health` reports the health status. GitHub Actions runs the automated checks and builds the Docker image.
 
 ## Branch Workflow
 The project is structured around the following Git branches:
@@ -45,6 +45,8 @@ git tag -a v1.0.1 -m "Release v1.0.1"
 ## Repository Structure
 ```text
 DevOps-Project-with-Git/
+├── .dockerignore
+├── .gitignore
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
@@ -52,7 +54,7 @@ DevOps-Project-with-Git/
 │   └── app.test.js
 ├── src/
 │   └── app.js
-├── .gitignore
+├── TASK 4 DEV.pdf
 ├── Dockerfile
 ├── README.md
 ├── package.json
@@ -63,8 +65,8 @@ DevOps-Project-with-Git/
 
 ### Prerequisites
 - Git
-- Node.js 18 or newer
-- Docker 20.0+
+- Node.js 16 or newer (CI runs Node.js 18)
+- Docker 20.0+ (only needed for container commands)
 
 ### Installation
 ```bash
@@ -72,21 +74,44 @@ DevOps-Project-with-Git/
 git clone https://github.com/Shraddha-Saknure/DevOps-Project-with-Git.git
 cd DevOps-Project-with-Git
 
-# Install dependencies
-npm install
+# Install the exact dependencies from the lockfile
+npm ci
+```
 
-# Start the application
+### Run the app locally
+Whenever you want to use the local app, open a terminal in the project folder and run:
+```bash
 npm start
 ```
 
+Keep the terminal open while using the app. It listens on port `3000` by default. In your browser, open:
+
+- [http://localhost:3000/](http://localhost:3000/) — app information
+- [http://localhost:3000/health](http://localhost:3000/health) — health status
+
+The local links work only on this computer while the server is running. Stop the server with `Ctrl+C`; run `npm start` again whenever you want to use it later.
+
 ### Verify the app
-Open a browser or use curl to test the endpoints:
+You can also verify the endpoints from a terminal while the app is running:
 ```bash
 curl http://localhost:3000/
 curl http://localhost:3000/health
 ```
 
+The root response reports version `1.0.1`, which is read from `package.json`. The health route returns a healthy status and runtime information.
+
+## Testing
+Run the project's automated checks locally:
+```bash
+npm test
+npm run lint
+npm run build
+```
+
+The Jest tests cover the root metadata response and the health endpoint. The lint script performs a JavaScript syntax check. The current build script is a success-message placeholder and does not produce compiled artifacts.
+
 ### Docker
+Build and run the container (requires Docker Desktop or another running Docker daemon):
 ```bash
 docker build -t devops-app .
 docker run -p 3000:3000 devops-app
@@ -94,11 +119,11 @@ docker run -p 3000:3000 devops-app
 
 ## CI/CD Workflow
 The GitHub Actions pipeline defined in `.github/workflows/ci.yml` runs automatically on push and pull request events for `main` and `dev` branches. It performs the following steps:
-- dependency installation
+- dependency installation with `npm ci` on Node.js 18
 - unit tests
-- lint validation
-- build verification
-- Docker image build
+- JavaScript syntax check
+- build script
+- Docker image build (the workflow does not start or smoke-test the container)
 
 ## Git Commands Used
 ```bash

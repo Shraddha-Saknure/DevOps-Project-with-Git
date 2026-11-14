@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
   res.json({
     service: 'DevOps Project',
     status: 'ok',
-    version: '1.0.0',
+    version: require('../package.json').version,
     message: 'Version-controlled DevOps project with Git and CI/CD pipeline.'
   });
 });
