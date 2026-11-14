@@ -27,7 +27,7 @@ Elevate Labs DevOps Internship Task 4
 ### Installation
 ```bash
 # Clone repository
-git clone 
+git clone https://github.com/Shraddha-Saknure/DevOps-Project-with-Git.git
 cd DevOps-Project-with-Git
 
 # Install dependencies
