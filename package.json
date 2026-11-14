@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "test": "jest",
-    "build": "echo 'Build completed successfully'",
-    "lint": "echo 'Linting completed'"
+    "test": "jest --runInBand",
+    "build": "node -e \"console.log('Build completed successfully')\"",
+    "lint": "node --check src/app.js"
   },
   "dependencies": {
     "express": "^4.18.2"
